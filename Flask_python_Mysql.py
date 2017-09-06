@@ -1,15 +1,20 @@
 from flask import Flask
-import psycopg2
+#import psycopg2
+#import react from react
+
+
+
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
+@app.route('/<var>')
+def hello_world(var):
+    return "%s" %var
 
-
-if __name__ == '__main__':
-    print("ajhdg")
+#python.............................
+if __name__ == '__main__': #default code
+    print("ajhdg") #print to console
+    #database checking.......................
     try:
         conn = psycopg2.connect("dbname='template1' user='dbuser' host='localhost' password='dbpass'")
     except:
