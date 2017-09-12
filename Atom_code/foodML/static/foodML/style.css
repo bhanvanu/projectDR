@@ -1,0 +1,108 @@
+{% load static %}
+
+
+body{
+
+    background-color: transparent;
+}
+/* ~~~~~~~~~~~LOGO PLUS NAVIGATION BAR ~~~~~~~~~~~~~~~*/
+#navigationbar{
+
+   /*text-align: center;
+        background-color: black;
+        border: 1px solid white;*/
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+/*li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}*/
+/*  nav Tags */
+li a:hover {
+    color: brown;
+    font-size: 180%;
+}
+
+li {
+
+    /*display: inline;
+    float: left;*/
+    /*text-align: left;*/
+}
+#test{
+    /*background-color: red;*/
+
+    display: inline-block;
+    color: white;
+
+    /*padding: 14px 16px;*/
+    /*background-image: url("dhaba1.png");*/
+
+    /*background-size: 300px 150px*/
+}
+#navUL{
+    /*text-align: center;*/
+    display: inline
+    border: 1px solid white;
+    background-color: white;
+    padding: 10px 5px;
+    color: black;
+}
+
+ #dhaba{
+    height: 80px;
+    width: 100px;
+ }
+#tag1{
+    /*background-color: red;*/
+
+    display: inline-block;
+    text-align: center;
+    float: right;
+    padding: 14px 30px;
+    font-family: "chalkduster", fantasy;
+}
+#tag2{
+    /*background-color: red;*/
+    text-align: center;
+    float: right;
+    padding: 14px 30px;
+    font-family: "chalkduster", fantasy;
+}
+#tag3{
+    /*background-color: red;*/
+    text-align: center;
+    display: inline-block;
+    float: right;
+    padding: 14px 30px;
+    font-family: "chalkduster", fantasy;
+}
+#tag4{
+    /*background-color: red;*/
+    text-align: center;
+    display: inline-block;
+
+    float: right;
+    padding: 14px 30px;
+    font-family: "chalkduster", fantasy;
+}
+
+/* ~~~~~~END OF LOGO PLUS NAVIGATION BAR ~~~~~~~~~~~~~~~*/
+
+
+/* ~~~~~~~~~~~ PARALLAX ~~~~~~~~~~~~~~~*/
+
+
+
+/* ~~~~~~~~~~~END OF PARALLAX ~~~~~~~~~~~~~~~*/
