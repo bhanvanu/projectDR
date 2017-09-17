@@ -60,6 +60,55 @@ li {
     color: black;
 }
 
+.after-parallax{
+  /*padding-left: 350px;*/
+  /*padding-right: 400px;*/
+  margin:0 auto;
+  /*background-color: yellow;*/
+  padding-bottom: 50px;
+  padding-top: 50px;
+  background-color: #f4f4f4;
+
+
+}
+
+#card-div{
+  padding-left: 210px;
+  height: 250px;
+  width: 82.5%;
+}
+
+#after-parallax-img{
+    width:auto; /*width of your image*/
+    height:inherit; /*height of your image*/
+    /*background-image:url('yourimage.file');*/
+    margin:0; /* If you want no margin */
+    padding:0; /*if your want to padding */
+    width: 100%;
+    -webkit-box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+}
+
+/*.row-ro {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}*/
+
+.products{
+    width: auto;
+    height: auto;
+    background-color: #f4f4f4;
+    padding-left: 200px;
+    padding-right: 200px
+
+}
+
+.products_slider{
+  -webkit-box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3
+
+}
  #dhaba{
     height: 80px;
     width: 100px;
@@ -96,6 +145,10 @@ li {
     float: right;
     padding: 14px 30px;
     font-family: "chalkduster", fantasy;
+}
+
+#footid{
+  background-color: #2B5464;
 }
 
 /* ~~~~~~END OF LOGO PLUS NAVIGATION BAR ~~~~~~~~~~~~~~~*/
