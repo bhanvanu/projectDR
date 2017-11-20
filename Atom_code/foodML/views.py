@@ -18,4 +18,13 @@ def home_page_view(request):
 def about_page_view(request):
     return render(request, 'foodML/about.html')
 
+def dashboard_page_view(request):
+    return render(request,'foodML/dashboard.html')
+
+def analytics_page_view(request):
+    return render(request,'foodML/analytics.html')
+
+def futureworks_page_view(request):
+    return render(request,'foodML/futureworks.html')
+
 # Create your views here.
