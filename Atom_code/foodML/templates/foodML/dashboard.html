@@ -1,0 +1,85 @@
+
+
+
+<!-- base.html is base template everything in block content will change -->
+{% load static %}
+<head>
+  <!--..Materialize..-->
+  <link rel="stylesheet" type="text/css" href="{% static 'foodML/style.css' %}" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.css' %}"  media="screen,projection"/>
+  <style>
+  {% load static %}
+  </style>
+
+
+<!--..Bootstrap..-->
+
+  <!-- <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+<!--NavBar-->
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="script.js"></script>
+
+
+
+</head>
+<!--...-->
+<!--..............................BODY.............................................-->
+<body>
+
+<!--...NAV_BAR_using -->
+<div id='cssmenu'>
+<ul>
+   <li class='active'><a href='#'>Home</a></li>
+   <li><a href="{% url 'dashboard' %}">dashboard</a></li>
+   <li><a href="{% url 'analytics' %}">analytics</a></li>
+   <li><a href="{% url 'futureworks' %}">futureworks</a></li>
+</ul>
+</div>
+
+
+
+  <div class="container">
+
+        <div class="mynav-wrapper">
+        <div id="font_dashboard">  Welcome to Dashboard </div>
+        </div>
+        <div class="inbetween"> </div>
+        <div id="myflex-container">
+                  <div id="empyt"> </div>
+                  <div class="myflex-item"></div>
+                  <div class="myflex-item"></div>
+                  <div class="myflex-item"></div>
+                  <div id="empyt2"> </div>
+        </div>
+         <div class="inbetween"> </div>
+          <div id="general_status">
+                <div id="empyt3"> 3</div>
+                <div class="myflex-item2"><img id="gen_image" src="{% static 'foodML/images/parallax_1.png' %}"></div>
+                <div id="empyt4"> 4</div>
+          </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
