@@ -1,5 +1,350 @@
-{% extends "foodML/base.html" %}
 
-{% block content %}
-<p>About page.</p>
-{% endblock %}
+{% load static %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'foodML/style.css' %}" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.css' %}"  media="screen,projection"/>
+
+
+<style>
+{% load static %}
+</style>
+
+</head>
+
+<body>
+  {% block footer %}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    {% endblock %}
+
+
+    {% include 'foodML/js.html' %}
+
+    <canvas class="chart chart-bubble" chart-data="data"
+                 chart-colors="colors" chart-options="options"></canvas>
+
+
+
+    <div id="chartdiv"></div>
+
+   <div class="row">
+            <div class="col s12 m3 sample">
+
+              <div class="z-depth-3">
+                  <canvas id="myChart" width="400" height="400"></canvas>
+              </div>
+            </div>
+
+            <div class="col s12 m5 sample">
+
+              <div class="z-depth-5">
+                  <canvas id="myChart2" width="400" height="400"></canvas>
+              </div>
+            </div>
+
+            <div class="col s12 m5 sample">
+
+              <div class="z-depth-5">
+                  <canvas id="myChart3" width="400" height="400"></canvas>
+              </div>
+
+            </div>
+
+   </div>
+
+   <script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+   <script src="http://www.amcharts.com/lib/3/serial.js"></script>
+   <script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
+
+   <script src="node_modules/chart.js/Chart.min.js"></script>
+   <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+
+    <script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var data_arr = {{ hourly_curr|safe }};
+    console.log(data_arr)
+    console.error(data_arr)
+    var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: data_arr,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 3
+        }]
+    },
+    options: {
+     animation: {
+                    duration: 13000
+                    },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:false
+                }
+            }]
+        }
+    }
+});
+
+var ctx2 = document.getElementById("myChart2").getContext('2d');
+var data_arr2 = {{ hourly_prev|safe }};
+console.log(data_arr2)
+console.error(data_arr2)
+var myChart2 = new Chart(ctx2, {
+type: 'bar',
+data: {
+    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    datasets: [{
+        label: '# of Votes',
+        data: data_arr2,
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 3
+    }]
+},
+options: {
+ animation: {
+                duration: 13000
+                },
+    scales: {
+        yAxes: [{
+            ticks: {
+               fontColor: "red",
+                beginAtZero:false
+
+            }
+        }]
+    }
+}
+});
+
+var ctx3 = document.getElementById("myChart3").getContext('2d');
+var data_arr = {{ hourly_curr|safe }};
+var data_arr2 = {{ hourly_prev|safe }};
+console.log(data_arr2)
+console.error(data_arr2)
+var myChart3 = new Chart(ctx3, {
+  type: 'line',
+    data: {
+      labels: ["10:00-12:00","12:00-14:00","14:00-16:00","16:00-18:00","18:00-20:00","20:00-22:00"],
+      datasets: [{
+          data: data_arr,
+          label: "Current Sale",
+          borderColor: "#3e95cd",
+          fill: false
+        }, {
+          data: data_arr2,
+          label: "Yesterday Sale",
+          borderColor: "#8e5ea2",
+          fill: false
+      }
+      ]
+    },
+    options: {
+
+      title: {
+        display: true,
+        text: 'Current Hourly Sale vs Yesterday Hourly Sale',
+
+      },scales: {
+          yAxes: [{
+              ticks: {
+                 fontColor: "white",
+                  beginAtZero:false
+
+              }
+          }]
+      }
+    },
+  //   oninit: function () {
+  //      this.main.append('rect')
+  //          .style('fill', 'white')
+  //          .attr('x', 0.5)
+  //          .attr('y', -0.5)
+  //          .attr('width', this.width)
+  //          .attr('height', this.height)
+  //        .transition().duration(5000)
+  //          .attr('x', this.width)
+  //          .attr('width', 0)
+  //        .remove();
+  //  }
+});
+// var data_arr = {{ hourly_curr|safe }};
+// var chart = AmCharts.makeChart("chartdiv", {
+//     "type": "serial",
+//     "theme":"black",
+//     "addClassNames": true,
+//     "pathToImages": "//cdn.amcharts.com/lib/3/images/",
+//     "dataProvider": data_arr,
+//     "valueAxes":[{}],
+//     "graphs": [{
+//         "id": "g1",
+//         "balloonText": "[[title]]: [[value]]",
+//         "lineThickness": 2,
+//         "title": "intra-day",
+//         "valueField": "value1"
+//     }],
+//     "zoomOutButtonRollOverAlpha": 0.15,
+//     "chartCursor": {
+//         "categoryBalloonDateFormat": "MMM DD JJ:NN",
+//         "cursorPosition": "mouse",
+//         "showNextAvailable":true
+//     },
+//     "categoryField": "date",
+//     "categoryAxis": {
+//         "minPeriod": "hh",
+//         "parseDates": true
+//     }
+// });
+
+var chartData = [];
+function generateChartData() {
+    var firstDate = new Date();
+    firstDate.setTime(firstDate.getTime() - 10 * 24 * 60 * 60 * 1000);
+
+    for (var i = firstDate.getTime(); i < (firstDate.getTime() + 2 * 24 * 60 * 60 * 1000);i += 60 * 60 * 1000) {
+        var newDate = new Date(i);
+
+        if (i == firstDate.getTime()) {
+            var value = Math.round(Math.random() * 10) + 1;
+        }
+        else {
+            var value = Math.round(chartData[chartData.length - 1].value1 / 100 * (90 + Math.round(Math.random() * 20)) * 100) / 100;
+        }
+
+      chartData.push({
+        date: newDate,
+        value1: value
+      });
+
+    }
+}
+
+generateChartData();
+console.log(chartData)
+console.error(chartData);
+var chart = AmCharts.makeChart("chartdiv", {
+    "type": "serial",
+    "theme":"black",
+    "addClassNames": true,
+    "pathToImages": "//cdn.amcharts.com/lib/3/images/",
+    "dataProvider": chartData,
+    "valueAxes":[{}],
+    "graphs": [{
+        "id": "g1",
+        "balloonText": "[[title]]: [[value]]",
+        "lineThickness": 2,
+        "title": "intra-day",
+        "valueField": "value1"
+    }],
+    "zoomOutButtonRollOverAlpha": 0.15,
+    "chartCursor": {
+        "categoryBalloonDateFormat": "MMM DD JJ:NN",
+        "cursorPosition": "mouse",
+        "showNextAvailable":true
+    },
+    "categoryField": "date",
+    "categoryAxis": {
+        "minPeriod": "hh",
+        "parseDates": true
+    }
+});
+
+// angular-chart
+angular.module('myModule', ['chart.js']);
+
+
+angular.module('app', ['chart.js'])
+  .config(['ChartJsProvider', function (ChartJsProvider) {
+    'use strict';
+    ChartJsProvider.setOptions({
+      tooltips: { enabled: false }
+    });
+  }])
+  .controller('BubbleCtrl', ['$scope', '$interval', function ($scope, $interval) {
+    'use strict';
+
+    $scope.options = {
+      scales: {
+        xAxes: [{
+          display: false,
+          ticks: {
+            max: 125,
+            min: -125,
+            stepSize: 10
+          }
+        }],
+        yAxes: [{
+          display: false,
+          ticks: {
+            max: 125,
+            min: -125,
+            stepSize: 10
+          }
+        }]
+      }
+    };
+
+    createChart();
+    $interval(createChart, 2000);
+
+    function createChart () {
+      $scope.series = [];
+      $scope.data = [];
+      for (var i = 0; i < 50; i++) {
+        $scope.series.push(`Series ${i}`);
+        $scope.data.push([{
+          x: randomScalingFactor(),
+          y: randomScalingFactor(),
+          r: randomRadius()
+        }]);
+      }
+    }
+
+    function randomScalingFactor () {
+      return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+    }
+
+    function randomRadius () {
+      return Math.abs(randomScalingFactor()) / 4;
+    }
+}]);
+
+    </script>
+
+
+
+
+</body>

@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -37,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.admindocs',
     #yapps
+
     'foodML',
     'materialize',
+    # 'angular-chart'
 ]
 
 MIDDLEWARE = [
@@ -54,6 +57,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cmpe195.urls'
+
+
 
 TEMPLATES = [
     {
@@ -79,8 +84,12 @@ WSGI_APPLICATION = 'cmpe195.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'restaurantdb', #db name
+        'USER': 'postgres', # user
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '5432', #default port number 5432
     }
 }
 

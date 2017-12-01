@@ -3,39 +3,416 @@
 {% load static %}
 <head>
 
+  <!--include this for javascript file for calender-->
+
+
+    <!--..To be able to use these icons, you must include below line in the <head>portion of your HTML code..-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!--..Materialize..-->
   <link rel="stylesheet" type="text/css" href="{% static 'foodML/style.css' %}" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
   <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.css' %}"  media="screen,projection"/>
   <style>
   {% load static %}
   </style>
 
-  <!--NavBar-->
-  <meta charset='utf-8'>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!--..Bootstrap..-->
+
+  <!-- <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
-  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+<!--NavBar-->
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="script.js"></script>
+
+
+
 </head>
+{% include 'foodML/js.html' %}
 
 <body>
-
-
+  <div id ="analytics_body">
+<!--Common ..........................NavBar-->
   <div id='cssmenu'>
   <ul>
-     <li class='active'><a href='#'>Home</a></li>
-     <li><a href="{% url 'dashboard' %}">dashboard</a></li>
-     <li><a href="{% url 'analytics' %}">analytics</a></li>
-     <li><a href="{% url 'futureworks' %}">futureworks</a></li>
+     <!-- <li class='active'><a href='#'>Home</a></li> -->
+     <li><a href="{% url 'futureworks' %}">Home</a></li>
+    <li ><a href="{% url 'dashboard' %}">dashboard</a></li>
+    <li class='active'><a href="{% url 'analytics' %}">analytics</a></li>
   </ul>
   </div>
+<!--END OF Common ..........................NavBar-->
+
+<br>
+<br>
+<!-- row begins (contains everything else than nav bar) -->
+<div class="row" >
+  <!-- 1st coloum begins -->
+  <div class="col m3" style="opacity:0.7;" >
+    <div class="card" style="height:90%;">
+      <div class="card-content">
+        <p class="mytext_one" style="opacity:0.7;">
+               GRAPHs INTERPRETATION :
+
+        </p>
+        <br>
+        <p id="para1">
+          Sales Prediction Graph display prediction for the upcoming year, in our case it predicts
+          for year 2013. The X axis represents the month and year and the Y axis represents money earned
+          and expected sales in upcoming months based past monthly sales history.
+          The prediction are based on machine training process.
+        </p>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <p id="para2">
+              Menu intelligence Graph displays recommendation based factors such current food trends, location,
+              resutaurant type. The items with the bigger bubble radius are the most trending and hot food items
+              in the market. The recommendation are made through rigorous machine training and learning process .
+            </p>
+      </div>
+    </div>
+  </div>
+  <!-- 1st coloum ended -->
+
+  <!-- 2rd coloum begins -->
+    <div class="col s6 m7" style="opacity:0.7;">
+
+            <div class="card small hoverable red lighten-1" style="width:100%;">
+
+
+              <div class="card" style=" background-color:#2D3A54">
+                <canvas id="myChart_line" width="250" height="300" ></canvas>
+              </div>
+                <!-- <div class="card-content white-text right-align">
+
+                  <span class="card-title"> GRAPH</span>
+                  <p> insert graph here </p>
+
+                  <div class="card-action">
+                      <p class="graph_name"> NAME OF GRAPH ONE</p>
+                    </div>
+                </div> -->
+
+            </div>
+
+            <br>
+
+            <div class="card small hoverable red lighten-1">
+              <div class="card" style=" background-color:#2D3A54">
+                <canvas id="popChart" style="width:100; height:300;"></canvas>
+
+              </div>
+
+                <!-- <div class="card-content white-text right-align" style="width:100%;">
+                  <span class="card-title"> GRAPH</span>
+                  <p> insert graph here </p>
+                  <div class="card-action">
+                      <p class="graph_name"> NAME OF GRAPH TWO</p>
+                    </div>
+                </div> -->
+
+            </div>
+
+
+    </div>
+<!-- 2rd coloum ended -->
+
+<!-- 3rd coloum begins -->
+
+  <!-- 3rd coloum ended -->
+
+</div>
+<!-- row ENDED (contains everything else than nav bar) -->
+
+
+<script>
+var data_arr = {{ analytics_sales|safe }};
+var ctx_dough = document.getElementById("myChart_line").getContext('2d');
+var myChart_dough = new Chart(ctx_dough, {
+  type: 'line',
+    data: {
+      labels: ["Jan2011", "Feb2011", "Mar2011", "Apr2011", "Jun2011", "Jul2011","Aug2011", "Sep2011", "Oct2011","Nov2011","Dec2011",
+              "Jan2012", "Feb2012", "Mar2012", "Apr2012", "Jun2012", "Jul2012","Aug2012", "Sep2012", "Oct2012","Nov2012","Dec2012",
+              "Jan2013", "Feb2013", "Mar2013", "Apr2013", "Jun2013", "Jul2013","Aug2013", "Sep2013", "Oct2013","Nov2013","Dec2013"],
+      datasets: [
+        {
+          label: "Prediction in $",
+          // backgroundColor:['#3e95cd', "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd","#3e95cd","#3e95cd",
+          //                 '#3e95cd', "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd","#3e95cd","#3e95cd",
+          //                   '#3e95cd', "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#3e95cd", "#ffff", "#ffff","#ffff","#ffff","#ffff", "#ffff","#ffff"],
+          backgroundColor: "#3e95cd",
+          data: data_arr,
+        }
+      ]
+    },
+    options: {
+      legend: {
+            display: true,
+            position:'top',
+            fontSize:5,
+
+            labels: {
+                position:'down',
+                fontColor: 'white',
+            }
+        },
+     maintainAspectRatio : false,
+
+      title: {
+        display: true,
+        text: 'Sales Prediction of year 2013',
+        fontColor:'white',
+        fontFamily:"Helvetica Neue"
+      },
+      animation: {
+                     duration: 25000
+                     },
+                     scales: {
+
+                         yAxes: [{
+                       //     gridLines: {
+                       //   display: false,
+                       //   color: "white"
+                       // },
+
+                             ticks: {
+                                 fontColor:"white",
+                                 fontSize:12,
+                                 beginAtZero:false
+
+                             },
+
+                     }],
+                     xAxes: [{
+                   //     gridLines: {
+                   //   display: false,
+                   //   color: "white"
+                   // },
+
+                         ticks: {
+                             fontColor:"white",
+                             fontSize:12,
+                             beginAtZero:false
+
+                         },
+
+                     }]
+                       }
+
+    }
+
+
+});
+
+
+</script>
+
+<!--2nd garph script-->
+<script>
+var ctx_dough = document.getElementById("myChart_dough3").getContext('2d');
+var myChart_dough = new Chart(ctx_dough, {
+  type: 'radar',
+    data: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          // backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          backgroundColor: "#f0f4c3",
+          // data: [2478,5267,734,784,433]
+          x:[5],
+          y:[10],
+          r:[15]
+        }
+      ]
+    },
+    options: {
+      legend: {
+            display: true,
+            position:'right',
+            labels: {
+                position:'down',
+                fontColor: 'white',
+                fontFamily:"Helvetica Neue"
+
+            }
+        },
+     maintainAspectRatio : false,
+
+      title: {
+        display: true,
+        text: 'Breakdown of Menu',
+        fontColor:'white',
+        fontFamily:"Helvetica Neue"
+
+      },
+      animation: {
+                     duration: 13000
+                     },
+
+    }
+
+
+});
+
+</script>
+<!--end of second graph script-->
+
+
+  <!-- <canvas id="chartJSContainer" width="600" height="400"></canvas> -->
+
+<script>
+var popCanvas = document.getElementById("popChart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var popData = {
+  datasets: [{
+    label: ['California Burrito','Tacos La salsa','Mexico City Tacos','Enchiladas','Veggie Super Burrito','Taco Salad'],
+    data: [{
+      x: 80,
+      y: 85,
+      r: 10
+    }, {
+      x: 60,
+      y: 30,
+      r: 20
+    }, {
+      x: 40,
+      y: 60,
+      r: 25
+    }, {
+      x: 72,
+      y: 50,
+      r: 50
+    }, {
+      x: 20,
+      y: 30,
+      r: 25
+    },
+    {
+      x: 20,
+      y: 30,
+      r: 25
+    },{
+      x: 45,
+      y: 36,
+      r: 65
+    },{
+      x: 12,
+      y: 26,
+      r: 32
+    },{
+      x: 26,
+      y: 31,
+      r: 15
+    },{
+      x: 20,
+      y: 30,
+      r: 25
+    },{
+      x: 24,
+      y: 19,
+      r: 23
+    },{
+      x: 25,
+      y: 31,
+      r: 47
+    },{
+      x: 50,
+      y: 50,
+      r: 40
+    },{
+      x: 44,
+      y: 26,
+      r: 13
+    }, {
+      x: 0,
+      y: 10,
+      r: 52
+    }],
+    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd","#3e95cd"],
+
+  }]
+};
+
+var bubbleChart = new Chart(popCanvas, {
+  type: 'bubble',
+  data: popData,
+  options: {
+    maintainAspectRatio : false,
+
+    animation: {
+                   duration: 25000
+                   },
+    title: {
+      display: true,
+      text: 'Menu intelligence Prediction',
+      fontColor:'white',
+      fontFamily:"Helvetica Neue"
+
+    },
+    scales: {
+
+        yAxes: [{
+      //     gridLines: {
+      //   display: false,
+      //   color: "white"
+      // },
+
+            ticks: {
+                fontColor:"white",
+                fontSize:11,
+                fontFamily:"Helvetica Neue",
+                beginAtZero:false
+
+            },
+            gridLines: {
+        color: 'white',
+        lineWidth: 0.5
+      }
+    }],
+    xAxes: [{
+  //     gridLines: {
+  //   display: false,
+  //   color: "white"
+  // },
+
+        ticks: {
+            fontColor:"white",
+            fontFamily:"Helvetica Neue",
+            fontSize:11,
+            beginAtZero:false
+
+        },
+        gridLines: {
+    color: 'white',
+    lineWidth: 0.3
+  }
+    }]
+      }
+
+  },
+});
 
 
 
-<div id="analytics_div">
-this is analytics
-<div>
-
+ </script>
+</div>
 </body>

@@ -2623,6 +2623,13 @@ a {
   width: 300px;
 }
 
+.z-depth-6 {
+  -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 1);
+          box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 1);
+  background-color: grey;
+
+}
+
 .z-depth-5:before {
     content: '';
     position: absolute;
@@ -3436,6 +3443,13 @@ nav ul a span.badge {
   margin-bottom: 20px;
 }
 
+.my_row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  background-color: yellow;
+}
+
 .row:after {
   content: "";
   display: table;
@@ -3459,6 +3473,16 @@ nav ul a span.badge {
   margin-left: auto;
   left: auto;
   right: auto;
+}
+
+
+.my_row .my_col.my_s1 {
+  width: 8.3333333333%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+  background-color: pink;
+  color: brown;
 }
 
 .row .col.s2 {
@@ -3523,7 +3547,13 @@ nav ul a span.badge {
   left: auto;
   right: auto;
 }
+/* S11 mai change karyo....original :
+width: 91.6666666667%;
+margin-left: auto;
+left: auto;
+right: auto;
 
+*/
 .row .col.s11 {
   width: 91.6666666667%;
   margin-left: auto;
@@ -3533,6 +3563,15 @@ nav ul a span.badge {
 
 .row .col.s12 {
   width: 100%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+
+}
+
+.row .col.s20.m2 {
+  height: 100%
+
   margin-left: auto;
   left: auto;
   right: auto;
@@ -4765,6 +4804,17 @@ small {
   position: relative;
   margin: 0.5rem 0 1rem 0;
   background-color: #fff;
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
+  border-radius: 2px;
+}
+
+.mycard {
+  position: relative;
+  margin: 0.5rem 0 1rem 0;
+  background-color: pink;
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
@@ -8223,9 +8273,9 @@ input[type=range]:focus::-ms-fill-upper {
   right: 0;
   bottom: 0;
   margin: 0;
-  background-color:#00AFF0;
+  /*background-color:#00AFF0;*/
 }
-
+/*changed..in futureworks page this is black border under slider*/
 /*chnge bgcolor*/
 .slider .indicators .indicator-item {
   display: inline-block;
@@ -8234,18 +8284,18 @@ input[type=range]:focus::-ms-fill-upper {
   height: 16px;
   width: 16px;
   margin: 0 12px;
-  /*background-color: #e0e0e0;*/
-  background-color:#00AFF0;
+  /*background-color: #e0e0e0;  #00AFF0 */
+  /*background-color:black;*/
 
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
   border-radius: 50%;
 }
-/*chnge bgcolor*/
+/*change bgcolor for ture works slider */
 
 .slider .indicators .indicator-item.active {
-  background-color: #4CAF50;
-  background-color:#00AFF0;
+  background-color: blue-grey lighten-2;
+  /*background-color:black;*/
 
 }
 

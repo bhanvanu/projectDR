@@ -1,4 +1,3 @@
-<!-- base.html is base template everything in block content will change -->
 {% load static %}
 <head>
 
@@ -21,18 +20,372 @@
 
 <body>
 
+  {% block footer %}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'materialize/js/materialize.js' %}"></script>
+    {% endblock %}
 
-  <div id='cssmenu'>
-  <ul>
-     <li class='active'><a href='#'>Home</a></li>
-     <li><a href="{% url 'dashboard' %}">dashboard</a></li>
-     <li><a href="{% url 'analytics' %}">analytics</a></li>
-     <li><a href="{% url 'futureworks' %}">futureworks</a></li>
-  </ul>
+  <!--Common ..........................NavBar-->
+    <div id='cssmenu'>
+    <ul>
+       <!-- <li class='active'><a href='#'>Home</a></li> -->
+       <li class='active'><a href="{% url 'futureworks' %}">Home</a></li>
+       <li><a href="{% url 'dashboard' %}">dashboard</a></li>
+       <li><a href="{% url 'analytics' %}">analytics</a></li>
+    </ul>
+    </div>
+  <!--END OF Common ..........................NavBar-->
+
+
+  <!-- <p>Scroll Up and Down this page to see the parallax scrolling effect.</p> -->
+  <div class="parallax-container">
+        <div class="parallax"><img src="{% static 'foodML/images/parallax_one.jpg' %}"></div>
+    </div>
+  <!--~~~~~~~~~~~~~~~~~ Parallax ~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--~~~~~~~~~~~~~~~~~ Parallax ~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+  <script>
+  $(document).ready(function(){
+     $('.parallax').parallax();
+   });
+
+  </script>
+
+  <div id="homebody">
+  <br>
+
+  <br>
+  <div id="after" style="fontFamily:Helvetica;text-align:center;text-indent:50px;">
+  <h5><b>Our mission is to fundamentally change the way current businesses Market by providing them an opportunity to make more profit through smarter and digital decision.
+
+  We strive for progress AND innovation. We believe in making our customer grow as our company grows with the customer’s Growth.
+</b>
+</h5>
+
+</div>
+<br>
+  <!--~~~~~~~~~~~~~~~~~ WHY US ~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!-- <div class="row">
+  <div class="col m1" >
+    <div class="card" style="height:30%;">
+      <div class="card-content">
+        <p id="why"> WHY CHOOSE US: </p>
+        <p class="mytext_one">
+
+
+Our mission is to fundamentally change the way current businesses Market by providing them an opportunity to make more profit through smarter and digital decision.
+
+We strive for progress & innovation. We believe in making our customer grow as our company grows with the customer’s Growth.
+        </p>
+      </div>
+    </div>
+  </div>
+</div> -->
+  <!--~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<!--........IMAGE CARDS....BEGINS.....................-->
+
+<!--........IMAGE CARD one....................-->
+<div class="row">
+
+        <div class="col s12 m5">
+          <div class="card">
+            <div class="card-image">
+              <img src="{% static 'foodML/images/card-1.jpg' %}">
+            </div>
+            <!-- <div class="card-action" style="text-align: center; color:#69f0ae">
+              <p> <b> <h4>PYTHON </h4></b></p>
+            </div> -->
+          </div>
+        </div>
+        <div class="col s2 m1" >
+        </div>
+
+      <div class="col s4 m4" style="text-indent: 50px;">
+        <br>
+        <br>
+        <br>
+        <br>
+      <p id="python">This application has the most advanced embedded analytics platform on the market.
+        We go beyond traditional BI offering augmented analytics and machine learning that close the
+        loop between data, insight, and action.</p>
+
+      </div>
+
+</div>
+<!--.......END OF .IMAGE CARD one....................-->
+
+<!--........IMAGE CARD TWO....................-->
+<div class="row">
+
+        <div class="col s4 m5" style="text-indent: 50px;">
+          <br>
+          <br>
+          <br>
+          <br>
+          <p id="python2">Comprehensive end-to-end solution, you can be up in running in days or weeks,
+            not months or years. More importantly, we partner with you to rapidly
+            innovate and scale with your growth.
+
+         </p>
+
+        </div>
+        <div class="col s2 m1" >
+        </div>
+
+        <div class="col s12 m5">
+          <div class="card">
+            <div class="card-image">
+              <img src="{% static 'foodML/images/back-back.jpg' %}">
+            </div>
+            <!-- <div class="card-action" style="text-align: center; color:#00838f">
+              <p> <b> <h4>DOCKER </h4></b></p>
+            </div> -->
+          </div>
+        </div>
+
+
+
+</div>
+<!--.......END OF.IMAGE CARD TWO....................-->
+
+<!--...........END OF IMAGE CARDS............-->
+
+
+<!--..................................SYMBOL OF QUOTE ---------------------------->
+<!-- <div class="row"> -->
+  <!--Spaccing mate col s3 m1-->
+      <!-- <div class="col s2 m1" >
+      </div> -->
+  <!--END OF ROW 1 Spaccing mate col s3 m1-->
+    <!-- <div id="quote_img">
+      <img id="quote" src="{% static 'foodML/images/Quote.png' %}" hspace="70">
+    </div> -->
+
+<!-- </div> -->
+<p id="why2"> ________________________Acknowledgements______________________ </p>
+
+<!--..............................END OF....SYMBOL OF QUOTE ---------------------------->
+<!--..............................Start QUOTE cards---------------------------->
+<div class="row">
+  <!--Spaccing mate col -->
+      <div class="col" style="width:12%;" >
+      </div>
+  <!--END OF Spaccing mate col -->
+
+          <div class="col s2"style="opacity:0.9;">
+            <div class="card" style="box-shadow: 0 9px 20px 0 rgba(0, 0, 0, 0.2), 0 20px 30px 0 rgba(0, 0, 0, 0.19);">
+              <div class="card-image">
+                <img src="{% static 'foodML/images/rod_fatoohi.jpg' %}">
+
+              </div>
+
+              <div class="card-action">
+                CMPE195 Professor: <br> Rod Fatoohi
+              </div>
+            </div>
+          </div>
+
+
+  <!--Spaccing mate col -->
+      <div class="col" style="width:10%;" >
+      </div>
+  <!--END OF Spaccing mate col -->
+
+  <div class="col s2"style="opacity:0.9;">
+    <div class="card" style="box-shadow: 0 9px 20px 0 rgba(0, 0, 0, 0.2), 0 20px 30px 0 rgba(0, 0, 0, 0.19);">
+      <div class="card-image">
+        <img src="{% static 'foodML/images/Sanjose.png' %}">
+
+      </div>
+
+      <div class="card-action">
+      SJSU <br> Proud Spartans!
+      </div>
+    </div>
   </div>
 
+    <!--Spaccing mate col -->
+        <div class="col" style="width:10%;" >
+        </div>
+    <!--END OF Spaccing mate col -->
+
+    <div class="col s2"style="opacity:0.9;">
+      <div class="card" style="box-shadow: 0 9px 20px 0 rgba(0, 0, 0, 0.2), 0 20px 30px 0 rgba(0, 0, 0, 0.19);">
+        <div class="card-image">
+          <img src="{% static 'foodML/images/Weider_snap.jpg' %}">
+
+        </div>
+
+        <div class="card-action">
+          Project Advisor: <br> DR. Weider YU
+        </div>
+      </div>
+    </div>
+
+</div>
+<!--..............................END QUOTE cards---------------------------->
+
+<div class="row">
+</div>
+
+<!--^^^^^^^^^^^^^^^^^^^^^^^^^^Products & srvices^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^--->
+
+<!--ROW ONE --------------------------------------------------------------------------------->
+<p id="why2"> ________________________PRODUCTS & SERVICES______________________ </p>
+  <div class="row">
+
+    <!--Spaccing mate col -->
+        <div class="col" style="width:5%;" >
+        </div>
+    <!--END OF Spaccing mate col -->
+
+        <!--ROW ONE-->
+        <div class="col s12 m3">
+          <div class="card hoverable ">
+                              <!-- style="background:#f5f1f6;" -->
+            <div class="card-content brown darken-2" >
+
+              <i class="large material-icons center" style="color:white; align-center;">settings_applications</i>
+
+            </div>
+            <div class="card-content red lighten-1">
+              <i class="large material-icons" style="color:white;">star_border</i>
+            </div>
+            <div class="card-content cyan darken-1">
+              <i class="large material-icons" style="color:white;">wb_cloudy</i>
+            </div>
+
+          </div>
+        </div>
+        <!--END OF ROW ONE-->
+
+        <!--Spaccing mate col -->
+            <div class="col" style="width:5%;" >
+            </div>
+        <!--END OF Spaccing mate col -->
+
+        <!-- ROW 2-->
+        <div class="col s12 m3">
+          <div class="card hoverable ">
+
+            <div class="card-content indigo darken-1" >
+              <i class="large material-icons" style="color:white;">insert_chart</i>
+            </div>
+            <div class="card-content blue-grey">
+              <i class="large material-icons" style="color:white;">language</i>
+            </div>
+            <div class="card-content teal accent-4">
+              <i class="large material-icons" style="color:white;">monetization_on</i>
+            </div>
+
+          </div>
+        </div>
+        <!-- End of ROW 2-->
+
+        <!--Spaccing mate col -->
+            <div class="col" style="width:5%;" >
+            </div>
+        <!--END OF Spaccing mate col -->
+
+        <!-- ROW 3-->
+            <div class="col s12 m3">
+              <div class="card hoverable ">
+
+                <div class="card-content pink darken-4" >
+                  <i class="large material-icons" style="color:white;">desktop_windows</i>
+                </div>
+                <div class="card-content yellow darken-2">
+                  <i class="large material-icons" style="color:white;">lightbulb_outline</i>
+                </div>
+                <div class="card-content red accent-3">
+                  <i class="large material-icons" style="color:white;">group_work</i>
+                </div>
+
+              </div>
+            </div>
+        <!-- end of ROW 3-->
+
+</div>
+
+<!--ROW ONE --------------------------------------------------------------------------------->
+
+<!--^^^^^^^^^^^^^^^^^^^^^^^^^END OF ^Products & srvices^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^--->
 
 
-This is future
+<!--...................................................................................................-->
+<div class="products_slider">
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="{% static 'foodML/images/pythontwo.jpg' %}"> <!-- random image -->
+        <!-- <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div> -->
+      </li>
+      <li>
+        <img src="{% static 'foodML/images/MachineLR.png' %}"> <!-- random image -->
+        <!-- <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div> -->
+      </li>
+      <li>
+        <img src="{% static 'foodML/images/g.jpg' %}"> <!-- random image -->
+        <!-- <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div> -->
+      </li>
+      <li>
+        <img src="{% static 'foodML/images/BIG.jpg' %}"> <!-- random image -->
+        <!-- <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div> -->
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+       // $('.slider').slider();
+        $('.slider').slider();
+     });
+</script>
+
+
+<!-- MY FOOTER -->
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Footer Content</h5>
+        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul id="footid">
+          <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright" style="background-color:#2B5464;">
+    <div class="container">
+    © 2017 Copyright Text
+    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+  </div>
+</footer>
+
+</div>
+<!-- END OF MY FOOTER-->
 
 </body>
